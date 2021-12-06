@@ -1,5 +1,6 @@
-package com.units_converter.tests.model;
+package com.units_converter;
 
+import com.units_converter.ParametersContainer;
 import com.units_converter.model.converter.Converter;
 import com.units_converter.model.converter.TimeConverter;
 import com.units_converter.model.exception.MismatchedValueException;
