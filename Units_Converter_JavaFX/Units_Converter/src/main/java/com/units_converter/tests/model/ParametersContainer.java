@@ -1,4 +1,4 @@
-package com.units_converter;
+package com.units_converter.tests.model;
 
 import com.units_converter.model.container.ConvertedData;
 import com.units_converter.model.container.InputData;

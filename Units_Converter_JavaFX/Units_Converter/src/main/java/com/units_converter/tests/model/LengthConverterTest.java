@@ -1,9 +1,7 @@
-package com.units_converter;
+package com.units_converter.tests.model;
 
-
-import com.units_converter.ParametersContainer;
 import com.units_converter.model.converter.Converter;
-import com.units_converter.model.converter.WeightConverter;
+import com.units_converter.model.converter.LengthConverter;
 import com.units_converter.model.exception.MismatchedValueException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -16,12 +14,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
- * Class for testing Weight Converter
+ * Class for testing Length Converter
  *
  * @author Mateusz Kretek
  * @version 1.0
  */
-public class WeightConverterTest {
+public class LengthConverterTest {
 	/**
 	 * {@link Converter} class object storing converter for testing
 	 */
@@ -32,9 +30,9 @@ public class WeightConverterTest {
 	 *
 	 * @return Stream of standard condition parameters for test
 	 */
-	static Stream<ParametersContainer> standardConditionsParametersProvider(){
+	static Stream<ParametersContainer> standardConditionsParametersProvider() {
 		return Stream.of(
-				new ParametersContainer(1.0, "kg", 1000.0, "g")
+				new ParametersContainer(1.0, "m", 100.0, "cm")
 		);
 	}
 
@@ -43,9 +41,9 @@ public class WeightConverterTest {
 	 *
 	 * @return Stream of border condition parameters for test
 	 */
-	static Stream<ParametersContainer> borderConditionsParametersProvider(){
+	static Stream<ParametersContainer> borderConditionsParametersProvider() {
 		return Stream.of(
-				new ParametersContainer(-1.0, "kg", 0.0, "g")
+				new ParametersContainer(-1.0, "m", 0.0, "cm")
 		);
 	}
 
@@ -55,7 +53,7 @@ public class WeightConverterTest {
 	@BeforeEach
 	public void setUp() {
 		try {
-			converter = new WeightConverter();
+			converter = new LengthConverter();
 		} catch (FileNotFoundException error) {
 			fail("Config file not found");
 		}
