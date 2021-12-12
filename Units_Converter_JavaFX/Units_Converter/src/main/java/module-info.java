@@ -7,4 +7,6 @@ module com.units_converter {
 
 	opens com.units_converter to javafx.fxml;
 	exports com.units_converter;
+	exports com.units_converter.controller;
+	opens com.units_converter.controller to javafx.fxml;
 }

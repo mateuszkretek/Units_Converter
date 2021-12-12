@@ -1,7 +1,5 @@
 package com.units_converter;
 
-import com.units_converter.controller.ConversionController;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,13 +17,6 @@ import java.io.IOException;
 public class Main extends Application {
 	private static Scene scene;
 
-	@Override
-	public void start(Stage stage) throws Exception {
-		scene = new Scene(loadFXML("units_converter"),640, 480);
-		stage.setScene(scene);
-		stage.show();
-	}
-
 	static void setRoot(String fxml) throws IOException {
 		scene.setRoot(loadFXML(fxml));
 	}
@@ -35,9 +26,15 @@ public class Main extends Application {
 		return fxmlLoader.load();
 	}
 
-
 	public static void main(String[] args) {
 		launch();
+	}
+
+	@Override
+	public void start(Stage stage) throws Exception {
+		scene = new Scene(loadFXML("units_converter"), 640, 480);
+		stage.setScene(scene);
+		stage.show();
 	}
 
 

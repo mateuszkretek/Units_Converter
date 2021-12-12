@@ -1,7 +1,6 @@
 package com.units_converter.model.converter;
 
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 
 /**
  * Class responsible for conversion of length values
@@ -18,7 +17,6 @@ public class LengthConverter extends Converter {
 	 */
 	public LengthConverter() throws FileNotFoundException {
 		this.configFileName = "src/main/resources/com/units_converter/config/length_converter_config.txt";
-		this.supportedUnitsCollection = new HashMap<>();
 		this.readConfig();
 	}
 }

@@ -3,7 +3,9 @@ package com.units_converter.controller;
 import com.units_converter.controller.command.*;
 import com.units_converter.controller.container.ConverterType;
 import com.units_converter.controller.container.Supplier;
-import com.units_converter.view.Console;
+import com.units_converter.model.exception.MismatchedValueException;
+
+import java.io.FileNotFoundException;
 
 
 /**
@@ -29,7 +31,6 @@ public class ConversionController {
 	 */
 	public ConversionController() {
 		supplier = new Supplier();
-		supplier.setView(new Console());
 	}
 
 	/**
@@ -37,32 +38,44 @@ public class ConversionController {
 	 *
 	 * @return true if command succeeded or false if failed
 	 */
-	public boolean checkConfig() {
-		command = new CheckConfigCommand(supplier);
-		command.execute();
+	public boolean checkConfig() throws FileNotFoundException {
+		try {
+			command = new CheckConfigCommand(supplier);
+			command.execute();
+		} catch (MismatchedValueException e) {
+		}
 		return supplier.getCommandSuccess();
 	}
 
-	public void setConverterType(ConverterType converterType){
+	public void setConverterType(ConverterType converterType) {
 		supplier.setConverterType(converterType);
 	}
 
 	public boolean setInputValue(double inputValue) {
-		command = new SetInputValueCommand(supplier, inputValue);
-		command.execute();
+		try {
+			command = new SetInputValueCommand(supplier, inputValue);
+			command.execute();
+		} catch (Exception e) {
+		}
 		return supplier.getCommandSuccess();
 	}
 
 
 	public boolean setInputUnit(String inputUnit) {
-		command = new SetInputUnitCommand(supplier, inputUnit);
-		command.execute();
+		try {
+			command = new SetInputUnitCommand(supplier, inputUnit);
+			command.execute();
+		} catch (Exception e) {
+		}
 		return supplier.getCommandSuccess();
 	}
 
 	public boolean setOutputUnit(String outputUnit) {
-		command = new SetOutputUnitCommand(supplier, outputUnit);
-		command.execute();
+		try {
+			command = new SetOutputUnitCommand(supplier, outputUnit);
+			command.execute();
+		} catch (Exception e) {
+		}
 		return supplier.getCommandSuccess();
 	}
 
@@ -71,13 +84,16 @@ public class ConversionController {
 	 *
 	 * @return true if command succeeded or false if failed
 	 */
-	public boolean convertValue() {
-		command = new ConvertValueCommand(supplier);
-		command.execute();
+	public boolean convertValue() throws MismatchedValueException {
+		try {
+			command = new ConvertValueCommand(supplier);
+			command.execute();
+		} catch (FileNotFoundException e) {
+		}
 		return supplier.getCommandSuccess();
 	}
 
-	public double printConvertedValue(){
+	public double printConvertedValue() {
 		return supplier.getConvertedData().getConvertedValue();
 	}
 }

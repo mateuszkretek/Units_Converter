@@ -1,7 +1,8 @@
-package com.units_converter.tests.model;
+package com.units_converter.tests;
+
 
 import com.units_converter.model.converter.Converter;
-import com.units_converter.model.converter.TimeConverter;
+import com.units_converter.model.converter.WeightConverter;
 import com.units_converter.model.exception.MismatchedValueException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -12,13 +13,14 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 /**
- * Class for testing Time Converter
+ * Class for testing Weight Converter
  *
  * @author Mateusz Kretek
  * @version 1.0
  */
-public class TimeConverterTest {
+public class WeightConverterTest {
 	/**
 	 * {@link Converter} class object storing converter for testing
 	 */
@@ -31,7 +33,7 @@ public class TimeConverterTest {
 	 */
 	static Stream<ParametersContainer> standardConditionsParametersProvider() {
 		return Stream.of(
-				new ParametersContainer(1.0, "h", 60.0, "min")
+				new ParametersContainer(1.0, "kg", 1000.0, "g")
 		);
 	}
 
@@ -42,7 +44,7 @@ public class TimeConverterTest {
 	 */
 	static Stream<ParametersContainer> borderConditionsParametersProvider() {
 		return Stream.of(
-				new ParametersContainer(-1.0, "h", 0.0, "min")
+				new ParametersContainer(-1.0, "kg", 0.0, "g")
 		);
 	}
 
@@ -52,7 +54,7 @@ public class TimeConverterTest {
 	@BeforeEach
 	public void setUp() {
 		try {
-			converter = new TimeConverter();
+			converter = new WeightConverter();
 		} catch (FileNotFoundException error) {
 			fail("Config file not found");
 		}

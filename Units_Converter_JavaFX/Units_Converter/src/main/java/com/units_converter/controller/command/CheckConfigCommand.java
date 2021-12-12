@@ -32,25 +32,25 @@ public class CheckConfigCommand extends Command {
 	 * Method for executing command content
 	 */
 	@Override
-	public void execute() {
+	public void execute() throws FileNotFoundException {
 		Map<ConverterType, ArrayList<String>> supportedUnitsCollection = new HashMap<>();
 		Map<ConverterType, Converter> converterCollection = new HashMap<>();
 		Converter converter;
-		try {
-			converter = new LengthConverter();
-			converterCollection.put(ConverterType.LENGTH, converter);
-			supportedUnitsCollection.put(ConverterType.LENGTH, converter.getSupportedUnits());
-			converter = new TimeConverter();
-			converterCollection.put(ConverterType.TIME, converter);
-			supportedUnitsCollection.put(ConverterType.TIME, converter.getSupportedUnits());
-			converter = new WeightConverter();
-			converterCollection.put(ConverterType.WEIGHT, converter);
-			supportedUnitsCollection.put(ConverterType.WEIGHT, converter.getSupportedUnits());
-		} catch (FileNotFoundException configFileNotFound) {
+//		try {
+		converter = new LengthConverter();
+		converterCollection.put(ConverterType.LENGTH, converter);
+		supportedUnitsCollection.put(ConverterType.LENGTH, converter.getSupportedUnits());
+		converter = new TimeConverter();
+		converterCollection.put(ConverterType.TIME, converter);
+		supportedUnitsCollection.put(ConverterType.TIME, converter.getSupportedUnits());
+		converter = new WeightConverter();
+		converterCollection.put(ConverterType.WEIGHT, converter);
+		supportedUnitsCollection.put(ConverterType.WEIGHT, converter.getSupportedUnits());
+/*		} catch (FileNotFoundException configFileNotFound) {
 			supplier.getView().printExceptionMessage(configFileNotFound.getMessage() + "program will shut down");
 			supplier.setCommandSuccess(false);
 			return;
-		}
+		}*/
 		supplier.setConverterCollection(converterCollection);
 		supplier.setSupportedUnitsCollection(supportedUnitsCollection);
 		supplier.setCommandSuccess(true);

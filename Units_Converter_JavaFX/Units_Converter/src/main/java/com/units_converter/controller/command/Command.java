@@ -1,6 +1,9 @@
 package com.units_converter.controller.command;
 
 import com.units_converter.controller.container.Supplier;
+import com.units_converter.model.exception.MismatchedValueException;
+
+import java.io.FileNotFoundException;
 
 /**
  * Class representing Command pattern
@@ -26,5 +29,5 @@ public abstract class Command {
 	/**
 	 * Method for executing command content
 	 */
-	public abstract void execute();
+	public abstract void execute() throws MismatchedValueException, FileNotFoundException;
 }

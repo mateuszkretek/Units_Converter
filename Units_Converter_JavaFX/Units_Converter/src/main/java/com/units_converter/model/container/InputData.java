@@ -68,14 +68,6 @@ public class InputData {
 		this.inputValue = inputValue;
 	}
 
-	public void setInputUnit(String inputUnit) {
-		this.inputUnit = inputUnit;
-	}
-
-	public void setOutputUnit(String outputUnit) {
-		this.outputUnit = outputUnit;
-	}
-
 	/**
 	 * Method for getting input value unit
 	 *
@@ -85,6 +77,10 @@ public class InputData {
 		return inputUnit;
 	}
 
+	public void setInputUnit(String inputUnit) {
+		this.inputUnit = inputUnit;
+	}
+
 	/**
 	 * Method for getting output value unit
 	 *
@@ -92,5 +88,9 @@ public class InputData {
 	 */
 	public String getOutputUnit() {
 		return outputUnit;
+	}
+
+	public void setOutputUnit(String outputUnit) {
+		this.outputUnit = outputUnit;
 	}
 }

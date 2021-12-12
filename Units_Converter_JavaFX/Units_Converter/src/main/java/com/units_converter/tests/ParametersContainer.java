@@ -1,4 +1,4 @@
-package com.units_converter.tests.model;
+package com.units_converter.tests;
 
 import com.units_converter.model.container.ConvertedData;
 import com.units_converter.model.container.InputData;
@@ -22,13 +22,14 @@ public class ParametersContainer {
 
 	/**
 	 * Default constructor
-	 * @param inputValue input value
-	 * @param inputUnit input value unit
+	 *
+	 * @param inputValue  input value
+	 * @param inputUnit   input value unit
 	 * @param outputValue output value
-	 * @param outputUnit output value unit
+	 * @param outputUnit  output value unit
 	 */
-	public ParametersContainer(Double inputValue, String inputUnit, Double outputValue, String outputUnit){
-		inputData = new InputData(inputValue,inputUnit,outputUnit);
-		convertedData = new ConvertedData(outputValue,outputUnit);
+	public ParametersContainer(Double inputValue, String inputUnit, Double outputValue, String outputUnit) {
+		inputData = new InputData(inputValue, inputUnit, outputUnit);
+		convertedData = new ConvertedData(outputValue, outputUnit);
 	}
 }

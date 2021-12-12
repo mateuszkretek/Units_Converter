@@ -3,7 +3,7 @@ package com.units_converter.controller.command;
 import com.units_converter.controller.container.Supplier;
 import com.units_converter.model.container.ConvertedData;
 import com.units_converter.model.exception.MismatchedValueException;
-import com.units_converter.view.UserInterface;
+
 
 /**
  * Class responsible for converting value
@@ -25,16 +25,16 @@ public class ConvertValueCommand extends Command {
 	 * Method for executing command content
 	 */
 	@Override
-	public void execute() {
+	public void execute() throws MismatchedValueException {
 		ConvertedData convertedData;
-		try {
-			convertedData = supplier.getConverterCollection().get(supplier.getConverterType()).convertValue(supplier.getInputData());
-		} catch (MismatchedValueException mismatchedValueException) {
+//		try {
+		convertedData = supplier.getConverterCollection().get(supplier.getConverterType()).convertValue(supplier.getInputData());
+/*		} catch (MismatchedValueException mismatchedValueException) {
 			UserInterface view = supplier.getView();
 			view.printExceptionMessage(mismatchedValueException.getMessage() + "program will shut down");
 			supplier.setCommandSuccess(false);
 			return;
-		}
+		}*/
 		supplier.setConvertedData(convertedData);
 		supplier.setCommandSuccess(true);
 	}

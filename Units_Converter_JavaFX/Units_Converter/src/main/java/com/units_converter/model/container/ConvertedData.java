@@ -20,7 +20,7 @@ public class ConvertedData {
 	/**
 	 * Constructor for {@link ConvertedData} object
 	 *
-	 * @param convertedValue Double object for storing numerical value after conversion
+	 * @param convertedValue     Double object for storing numerical value after conversion
 	 * @param convertedValueUnit String object for storing converted value unit
 	 */
 	public ConvertedData(Double convertedValue, String convertedValueUnit) {

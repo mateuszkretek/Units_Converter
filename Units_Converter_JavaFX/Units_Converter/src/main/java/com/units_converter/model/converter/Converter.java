@@ -1,13 +1,12 @@
 package com.units_converter.model.converter;
+
 import com.units_converter.model.container.ConvertedData;
 import com.units_converter.model.container.InputData;
 import com.units_converter.model.exception.MismatchedValueException;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Parent class for all categories of converters
@@ -33,9 +32,11 @@ abstract public class Converter {
 	 */
 	protected void readConfig() throws FileNotFoundException {
 		Scanner fileScanner = new Scanner(new File(this.configFileName));
+		Map<String, Double> bufferMap = new HashMap<>();
 		while (fileScanner.hasNext()) {
-			this.supportedUnitsCollection.put(fileScanner.next(), fileScanner.nextDouble());
+			bufferMap.put(fileScanner.next(), fileScanner.nextDouble());
 		}
+		this.supportedUnitsCollection = new TreeMap<>(bufferMap);
 		fileScanner.close();
 	}
 

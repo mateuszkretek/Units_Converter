@@ -3,8 +3,6 @@ package com.units_converter.controller.container;
 import com.units_converter.model.container.ConvertedData;
 import com.units_converter.model.container.InputData;
 import com.units_converter.model.converter.Converter;
-import com.units_converter.view.UserInterface;
-
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -16,10 +14,6 @@ import java.util.Map;
  * @version 2.0
  */
 public class Supplier {
-	/**
-	 * Object implementing {@link UserInterface} interface and representing output for information for user
-	 */
-	private UserInterface view;
 
 	/**
 	 * Map storing list of supported units and converters for them
@@ -64,23 +58,6 @@ public class Supplier {
 		inputData = new InputData();
 	}
 
-	/**
-	 * Getter method for current view
-	 *
-	 * @return returns view
-	 */
-	public UserInterface getView() {
-		return view;
-	}
-
-	/**
-	 * Setter for current view
-	 *
-	 * @param view object which will be assigned
-	 */
-	public void setView(UserInterface view) {
-		this.view = view;
-	}
 
 	/**
 	 * Getter for list of supported units
@@ -193,9 +170,11 @@ public class Supplier {
 	public void setInputUnit(String inputUnit) {
 		this.inputData.setInputUnit(inputUnit);
 	}
+
 	public void setOutputUnit(String outputUnit) {
 		this.inputData.setOutputUnit(outputUnit);
 	}
+
 	public void setInputValue(double inputValue) {
 		this.inputData.setInputValue(inputValue);
 	}

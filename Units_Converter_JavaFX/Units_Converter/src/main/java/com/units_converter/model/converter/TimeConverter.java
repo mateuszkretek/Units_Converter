@@ -1,7 +1,6 @@
 package com.units_converter.model.converter;
 
 import java.io.FileNotFoundException;
-import java.util.HashMap;
 
 /**
  * Class responsible for conversion of time values
@@ -18,7 +17,6 @@ public class TimeConverter extends Converter {
 	 */
 	public TimeConverter() throws FileNotFoundException {
 		this.configFileName = "src/main/resources/com/units_converter/config/time_converter_config.txt";
-		this.supportedUnitsCollection = new HashMap<>();
 		this.readConfig();
 	}
 }

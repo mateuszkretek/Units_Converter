@@ -1,23 +1,25 @@
-package com.units_converter;
+package com.units_converter.controller;
 
 
 import com.units_converter.controller.ConversionController;
 import com.units_converter.controller.container.ConverterType;
+import com.units_converter.model.exception.MismatchedValueException;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class DisplayController implements Initializable {
 
-	@FXML
-	private Button convertButton;
+	ConversionController conversionController;
+	/*	@FXML
+		private Button convertButton;*/
 	@FXML
 	private TextField inputValue;
 	@FXML
@@ -29,24 +31,24 @@ public class DisplayController implements Initializable {
 	@FXML
 	private ComboBox<String> convertedValueUnit;
 
-	ConversionController conversionController;
-
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		converterTypeComboBox.setItems(FXCollections.observableArrayList(ConverterType.values()));
-
 		conversionController = new ConversionController();
-		conversionController.checkConfig();
-		/*if (controller.checkConfig()) {
-			if (controller.detectConverterType())
-				if (controller.convertValue())
-					controller.printConvertedData();
-		}*/
-		//test();
+		try {
+			conversionController.checkConfig();
+		} catch (FileNotFoundException exception) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Config Error");
+			alert.setHeaderText("Config file error");
+			alert.setContentText(exception.getMessage());
+			alert.showAndWait();
+		}
+
 	}
 
 	@FXML
-	private void converterTypeChosen(){
+	private void converterTypeChosen() {
 		ConverterType converterType = converterTypeComboBox.getValue();
 		inputValueUnit.setItems(
 				FXCollections.observableArrayList(
@@ -58,29 +60,33 @@ public class DisplayController implements Initializable {
 	}
 
 	@FXML
-	private void inputUnitChosen(){
+	private void inputUnitChosen() {
 		conversionController.setInputUnit(inputValueUnit.getValue());
 	}
 
 	@FXML
-	private void outputUnitChosen(){
+	private void outputUnitChosen() {
 		conversionController.setOutputUnit(convertedValueUnit.getValue());
 	}
 
 	@FXML
-	private void convertValue(){
-		conversionController.setInputValue(Double.parseDouble(inputValue.getText()));
-		conversionController.convertValue();
-		convertedValue.setText(String.valueOf(conversionController.printConvertedValue()));
+	private void convertValue() {
+		try {
+			conversionController.setInputValue(Double.parseDouble(inputValue.getText()));
+			conversionController.convertValue();
+			convertedValue.setText(String.valueOf(conversionController.printConvertedValue()));
+		} catch (MismatchedValueException exception) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Conversion Error");
+			alert.setHeaderText("Mismatched value for conversion");
+			alert.setContentText(exception.getMessage());
+			alert.showAndWait();
+		} catch (NumberFormatException exception) {
+			Alert alert = new Alert(Alert.AlertType.ERROR);
+			alert.setTitle("Conversion Error");
+			alert.setHeaderText("Mismatched value for conversion");
+			alert.setContentText("Value must be a number");
+			alert.showAndWait();
+		}
 	}
-
 }
-
-/*		switch (converterType){
-			case LENGTH:
-				break;
-			case TIME:
-				break;
-			case WEIGHT:
-				break;
-		}*/
