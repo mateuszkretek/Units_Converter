@@ -1,18 +1,18 @@
 package com.units_converter.controller;
 
 
-import com.units_converter.controller.ConversionController;
 import com.units_converter.controller.container.ConverterType;
 import com.units_converter.model.exception.MismatchedValueException;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.FileNotFoundException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class DisplayController implements Initializable {
@@ -30,6 +30,8 @@ public class DisplayController implements Initializable {
 	private ComboBox<String> inputValueUnit;
 	@FXML
 	private ComboBox<String> convertedValueUnit;
+	@FXML
+	private TreeView<String> unitsTree;
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -45,6 +47,32 @@ public class DisplayController implements Initializable {
 			alert.showAndWait();
 		}
 
+		TreeItem<String> rootItem = new TreeItem<>("Supported Values");
+		//rootItem.isExpanded(true);
+		ArrayList<TreeItem<String>> typesListTreeItems = new ArrayList<>();
+		for (ConverterType type: ConverterType.values()) {
+			typesListTreeItems.add(new TreeItem<>(type.toString()));
+		}
+		rootItem.getChildren().addAll(typesListTreeItems);
+		ArrayList<TreeItem<String>> buffer = new ArrayList<>();
+
+		for (int i = 0; i<rootItem.getChildren().size();i++) {
+			for (String unit:this
+					.conversionController
+					.supplier
+					.getSupportedUnitsCollection()
+					.get(ConverterType.values()[i]))
+			{
+				buffer.add(new TreeItem<>(unit));
+			}
+			rootItem.getChildren()
+					.get(i)
+					.getChildren()
+					.addAll(buffer);
+
+			buffer.clear();
+		}
+		unitsTree.setRoot(rootItem);
 	}
 
 	@FXML

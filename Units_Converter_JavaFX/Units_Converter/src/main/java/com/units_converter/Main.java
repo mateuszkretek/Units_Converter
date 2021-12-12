@@ -32,7 +32,7 @@ public class Main extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		scene = new Scene(loadFXML("units_converter"), 640, 480);
+		scene = new Scene(loadFXML("units_converter"), 1280, 720);
 		stage.setScene(scene);
 		stage.show();
 	}
