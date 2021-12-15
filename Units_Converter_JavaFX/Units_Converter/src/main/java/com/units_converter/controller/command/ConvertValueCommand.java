@@ -23,6 +23,8 @@ public class ConvertValueCommand extends Command {
 
 	/**
 	 * Method for executing command content
+	 *
+	 * @throws MismatchedValueException when value is mismatched
 	 */
 	@Override
 	public void execute() throws MismatchedValueException {

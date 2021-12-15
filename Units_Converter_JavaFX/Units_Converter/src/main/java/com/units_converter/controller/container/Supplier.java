@@ -167,14 +167,29 @@ public class Supplier {
 		this.inputData = inputData;
 	}
 
+	/**
+	 * Setter for input unit
+	 *
+	 * @param inputUnit String storing input unit
+	 */
 	public void setInputUnit(String inputUnit) {
 		this.inputData.setInputUnit(inputUnit);
 	}
 
+	/**
+	 * Setter for output unit
+	 *
+	 * @param outputUnit String storing output unit
+	 */
 	public void setOutputUnit(String outputUnit) {
 		this.inputData.setOutputUnit(outputUnit);
 	}
 
+	/**
+	 * Setter for input value
+	 *
+	 * @param inputValue String storing input value
+	 */
 	public void setInputValue(double inputValue) {
 		this.inputData.setInputValue(inputValue);
 	}

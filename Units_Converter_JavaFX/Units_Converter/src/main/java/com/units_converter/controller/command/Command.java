@@ -28,6 +28,9 @@ public abstract class Command {
 
 	/**
 	 * Method for executing command content
+	 *
+	 * @throws MismatchedValueException if any value is mismatched
+	 * @throws FileNotFoundException    if needed file was not found
 	 */
 	public abstract void execute() throws MismatchedValueException, FileNotFoundException;
 }

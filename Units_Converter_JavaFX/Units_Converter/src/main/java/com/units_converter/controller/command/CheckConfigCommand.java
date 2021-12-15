@@ -28,8 +28,11 @@ public class CheckConfigCommand extends Command {
 		super(supplier);
 	}
 
+
 	/**
 	 * Method for executing command content
+	 *
+	 * @throws FileNotFoundException if config file was not found
 	 */
 	@Override
 	public void execute() throws FileNotFoundException {

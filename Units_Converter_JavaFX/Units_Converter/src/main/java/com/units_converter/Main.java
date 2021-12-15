@@ -21,15 +21,28 @@ public class Main extends Application {
 		scene.setRoot(loadFXML(fxml));
 	}
 
+	/**
+	 * FXML loader
+	 * @param fxml
+	 * @return
+	 * @throws IOException
+	 */
 	private static Parent loadFXML(String fxml) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxml + ".fxml"));
 		return fxmlLoader.load();
 	}
 
+	/**
+	 * Main method of program
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch();
 	}
 
+	/**
+	 * Method starting scene
+	 */
 	@Override
 	public void start(Stage stage) throws Exception {
 		scene = new Scene(loadFXML("units_converter"), 1280, 720);
@@ -38,11 +51,7 @@ public class Main extends Application {
 	}
 
 
-	/**
-	 * Main method of program
-	 *
-	 *
-	 *//*
+/*
 	public void main(String args) {
 		ConversionController controller = new ConversionController();
 		if (controller.checkConfig()) {
