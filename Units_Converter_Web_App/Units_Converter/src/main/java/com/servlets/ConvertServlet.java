@@ -1,5 +1,7 @@
 package com.servlets;
 
+import com.model.container.ConvertedData;
+import com.model.container.InputData;
 import com.model.exception.MismatchedValueException;
 import com.supplier.Supplier;
 
@@ -16,17 +18,19 @@ public class ConvertServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession userSession = request.getSession();
         Supplier supplier = (Supplier) userSession.getAttribute("supplier");
-        supplier.setInputValue(Integer.parseInt(request.getParameter("value")));
-        supplier.setInputUnit(request.getParameter("input_unit"));
-        supplier.setOutputUnit(request.getParameter("output_unit"));
+        InputData inputData = new InputData();
+        inputData.setInputValue(Integer.parseInt(request.getParameter("value")));
+        inputData.setInputUnit(request.getParameter("input_unit"));
+        inputData.setOutputUnit(request.getParameter("output_unit"));
+        ConvertedData convertedData = new ConvertedData(0.0, " ");
         try {
-            supplier.getConverterCollection().get(supplier.getConverterType()).convertValue(supplier.getInputData());
+            convertedData = supplier.getConverterCollection().get(supplier.getConverterType()).convertValue(inputData);
         } catch (MismatchedValueException exception) {
         }
         PrintWriter out = response.getWriter();
         out.println("<html>\n" +
                 "<body>\n" +
-                "<center><h1>" + supplier.getConvertedData().getConvertedValue() + " " + supplier.getConvertedData().getConvertedValueUnit() + "</h1></center>\n" +
+                "<center><h1>" + convertedData.getConvertedValue() + " " + convertedData.getConvertedValueUnit() + "</h1></center>\n" +
                 "</body>\n" +
                 "</html>"
         );

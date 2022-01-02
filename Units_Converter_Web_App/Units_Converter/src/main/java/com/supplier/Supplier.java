@@ -1,7 +1,5 @@
 package com.supplier;
 
-import com.model.container.ConvertedData;
-import com.model.container.InputData;
 import com.model.converter.Converter;
 
 import java.util.ArrayList;
@@ -26,26 +24,15 @@ public class Supplier {
 	private Map<ConverterType, Converter> converterCollection;
 
 	/**
-	 * {@link InputData} object for storing data passed by User
-	 */
-	private InputData inputData;
-
-	/**
 	 * {@link ConverterType} object storing type of current conversion
 	 */
 	private ConverterType converterType;
-
-	/**
-	 * {@link ConvertedData} object storing data after conversion
-	 */
-	private ConvertedData convertedData;
 
 	/**
 	 * Default constructor
 	 */
 	public Supplier() {
 		super();
-		inputData = new InputData();
 	}
 
 	/**
@@ -100,68 +87,5 @@ public class Supplier {
 	 */
 	public void setConverterCollection(Map<ConverterType, Converter> converterCollection) {
 		this.converterCollection = converterCollection;
-	}
-
-	/**
-	 * Getter for {@link InputData} object storing data passed by user
-	 *
-	 * @return {@link InputData} object storing data passed by user
-	 */
-	public InputData getInputData() {
-		return this.inputData;
-	}
-
-	/**
-	 * Setter for {@link InputData} object storing data passed by user
-	 *
-	 * @param inputData {@link InputData} object storing data passed by user
-	 */
-	public void setInputData(InputData inputData) {
-		this.inputData = inputData;
-	}
-
-	/**
-	 * Setter for input unit
-	 *
-	 * @param inputUnit String storing input unit
-	 */
-	public void setInputUnit(String inputUnit) {
-		this.inputData.setInputUnit(inputUnit);
-	}
-
-	/**
-	 * Setter for output unit
-	 *
-	 * @param outputUnit String storing output unit
-	 */
-	public void setOutputUnit(String outputUnit) {
-		this.inputData.setOutputUnit(outputUnit);
-	}
-
-	/**
-	 * Setter for input value
-	 *
-	 * @param inputValue String storing input value
-	 */
-	public void setInputValue(double inputValue) {
-		this.inputData.setInputValue(inputValue);
-	}
-
-	/**
-	 * Getter for {@link ConvertedData} object storing data after conversion
-	 *
-	 * @return {@link ConvertedData} object storing data after conversion
-	 */
-	public ConvertedData getConvertedData() {
-		return convertedData;
-	}
-
-	/**
-	 * Setter for {@link ConvertedData} object storing data after conversion
-	 *
-	 * @param convertedData {@link ConvertedData} object storing data after conversion
-	 */
-	public void setConvertedData(ConvertedData convertedData) {
-		this.convertedData = convertedData;
 	}
 }
