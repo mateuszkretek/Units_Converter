@@ -54,7 +54,6 @@ public class InitializeServlet extends HttpServlet {
                 "<form action=\"print_units\" method=\"get\">\n" +
                 "<center><label for=\"type_select\">Choose converter type:</label><br>\n" +
                 "<select name=\"types\" id=\"type_select\">\n" +
-                //"<option value=\"\"></option>\n" +
                 "<option value=\"LENGTH\">Length</option>\n" +
                 "<option value=\"TIME\">Time</option>\n" +
                 "<option value=\"WEIGHT\">Weight</option>\n" +
@@ -62,7 +61,7 @@ public class InitializeServlet extends HttpServlet {
                 "<br><input type=\"submit\" value=\"confirm\"/></center>" +
                 "</form>\n" +
                 "</body>\n" +
-                "</html>\n"
+                "</html>"
         );
     }
 

@@ -12,6 +12,10 @@
     <servlet-name>PrintUnits</servlet-name>
     <servlet-class>com.servlets.PrintUnitsServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ConvertServlet</servlet-name>
+    <servlet-class>com.servlets.ConvertServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Initialize</servlet-name>
     <url-pattern>/init</url-pattern>
@@ -19,6 +23,10 @@
   <servlet-mapping>
     <servlet-name>PrintUnits</servlet-name>
     <url-pattern>/print_units</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ConvertServlet</servlet-name>
+    <url-pattern>/convert</url-pattern>
   </servlet-mapping>
 </web-app>
 
