@@ -1,5 +1,8 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<form action="init" method="get">
+    <center><h1>Welcome in my awesome converter</h1>
+    <input type="submit" value="continue"/></center>
+</form>
 </body>
 </html>

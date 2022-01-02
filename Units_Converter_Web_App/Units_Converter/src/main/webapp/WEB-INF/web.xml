@@ -4,4 +4,21 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+    <servlet-name>Initialize</servlet-name>
+    <servlet-class>com.servlets.InitializeServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>PrintUnits</servlet-name>
+    <servlet-class>com.servlets.PrintUnitsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Initialize</servlet-name>
+    <url-pattern>/init</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>PrintUnits</servlet-name>
+    <url-pattern>/print_units</url-pattern>
+  </servlet-mapping>
 </web-app>
+

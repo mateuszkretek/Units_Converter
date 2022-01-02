@@ -16,7 +16,7 @@ public class LengthConverter extends Converter {
 	 * @throws FileNotFoundException if config file was not found
 	 */
 	public LengthConverter() throws FileNotFoundException {
-		this.configFileName = "src/main/resources/com/units_converter/config/length_converter_config.txt";
+		this.configFileName = "src/main/resources/length_converter_config.txt";
 		this.readConfig();
 	}
 }

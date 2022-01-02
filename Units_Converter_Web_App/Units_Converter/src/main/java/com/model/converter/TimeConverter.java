@@ -16,7 +16,7 @@ public class TimeConverter extends Converter {
 	 * @throws FileNotFoundException if config file was not found
 	 */
 	public TimeConverter() throws FileNotFoundException {
-		this.configFileName = "src/main/resources/com/units_converter/config/time_converter_config.txt";
+		this.configFileName = "src/main/resources/time_converter_config.txt";
 		this.readConfig();
 	}
 }

@@ -16,7 +16,7 @@ public class WeightConverter extends Converter {
 	 * @throws FileNotFoundException if config file was not found
 	 */
 	public WeightConverter() throws FileNotFoundException {
-		this.configFileName = "src/main/resources/com/units_converter/config/weight_converter_config.txt";
+		this.configFileName = "src/main/resources/weight_converter_config.txt";
 		this.readConfig();
 	}
 }
