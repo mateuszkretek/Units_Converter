@@ -30,7 +30,10 @@ public class ConvertServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println("<html>\n" +
                 "<body>\n" +
-                "<center><h1>" + convertedData.getConvertedValue() + " " + convertedData.getConvertedValueUnit() + "</h1></center>\n" +
+                "<form action=\"init\" method=\"get\">\n" +
+                "<center><h1>" + convertedData.getConvertedValue() + " " + convertedData.getConvertedValueUnit() + "</h1>\n" +
+                "<input type=\"submit\" value=\"continue\"/></center>\n" +
+                "</form>\n" +
                 "</body>\n" +
                 "</html>"
         );
