@@ -4,14 +4,13 @@ import com.model.converter.Converter;
 import com.model.converter.LengthConverter;
 import com.model.converter.TimeConverter;
 import com.model.converter.WeightConverter;
-import com.supplier.ConverterType;
-import com.supplier.Supplier;
+import com.model.container.ConverterType;
+import com.model.container.Supplier;
 
-import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -44,7 +43,7 @@ public class InitializeServlet extends HttpServlet {
     }
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Supplier supplier = new Supplier();
         this.readConfig(supplier);
         request.getSession().setAttribute("supplier", supplier);
@@ -58,9 +57,18 @@ public class InitializeServlet extends HttpServlet {
                 "<option value=\"TIME\">Time</option>\n" +
                 "<option value=\"WEIGHT\">Weight</option>\n" +
                 "</select>\n" +
-                "<br><input type=\"submit\" value=\"confirm\"/></center>" +
-                "</form>\n" +
-                "</body>\n" +
+                "<br><input type=\"submit\" value=\"confirm\"/>" +
+                "</form>\n"+
+                "<br><h3>Last conversion:</h3>\n"
+        );
+        Cookie ck[] = request.getCookies();
+        for (Cookie cookie: ck) {
+            if (cookie.getName().equals("HistoryCookie")) {
+                out.print(cookie.getValue() +"<br>"+ "\n");
+            }
+        }
+        out.println(
+                "</center></body>\n" +
                 "</html>"
         );
     }

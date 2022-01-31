@@ -1,4 +1,4 @@
-package com.supplier;
+package com.model.container;
 
 
 /**

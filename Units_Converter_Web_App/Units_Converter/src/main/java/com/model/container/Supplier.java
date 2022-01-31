@@ -1,5 +1,6 @@
-package com.supplier;
+package com.model.container;
 
+import com.model.container.ConverterType;
 import com.model.converter.Converter;
 
 import java.util.ArrayList;
